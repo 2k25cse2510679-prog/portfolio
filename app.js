@@ -279,7 +279,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (hotbarDimBtn) hotbarDimBtn.addEventListener('click', toggleDimension);
 
   // ============================================================
-  // 5. MINECRAFT LORE TOOLTIP SYSTEM
+  // 5. MINECRAFT LORE TOOLTIP SYSTEM (Responsive & Touch Ready)
   // ============================================================
   const tooltip = document.getElementById('mc-tooltip');
   const ttName = document.getElementById('tt-name');
@@ -290,40 +290,76 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const interactiveSlots = document.querySelectorAll('.inv-slot.has-item');
 
+  function populateTooltip(slot) {
+    const name = slot.dataset.name || 'Unknown Artifact';
+    const rarity = slot.dataset.rarity || 'Common';
+    const type = slot.dataset.type || 'Equipment';
+    const lore = slot.dataset.lore || '';
+    const stat = slot.dataset.stat || '';
+    const enchant = slot.dataset.enchantment || '';
+
+    ttName.textContent = name;
+    ttName.className = 'tooltip-header';
+    if (rarity === 'Legendary') ttName.classList.add('text-gold');
+    else if (rarity === 'Epic') ttName.classList.add('text-purple');
+    else if (rarity === 'Rare') ttName.classList.add('text-aqua');
+
+    ttType.textContent = `${rarity} ${type}`;
+    ttLore.textContent = lore;
+    ttStat.textContent = stat;
+    ttEnchant.textContent = enchant;
+
+    tooltip.classList.remove('hidden');
+  }
+
+  function positionTooltip(clientX, clientY) {
+    const ttWidth = tooltip.offsetWidth || 260;
+    const ttHeight = tooltip.offsetHeight || 160;
+    let x = clientX + 14;
+    let y = clientY + 14;
+
+    // Viewport clamping so tooltip never clips off-screen on phones/tablets
+    if (x + ttWidth > window.innerWidth - 10) {
+      x = Math.max(10, clientX - ttWidth - 10);
+    }
+    if (y + ttHeight > window.innerHeight - 80) {
+      y = Math.max(60, clientY - ttHeight - 10);
+    }
+
+    tooltip.style.left = `${x}px`;
+    tooltip.style.top = `${y}px`;
+  }
+
   interactiveSlots.forEach(slot => {
-    slot.addEventListener('mouseenter', (e) => {
+    // Desktop Hover
+    slot.addEventListener('mouseenter', () => {
       sfx.playPop();
-      const name = slot.dataset.name || 'Unknown Artifact';
-      const rarity = slot.dataset.rarity || 'Common';
-      const type = slot.dataset.type || 'Equipment';
-      const lore = slot.dataset.lore || '';
-      const stat = slot.dataset.stat || '';
-      const enchant = slot.dataset.enchantment || '';
-
-      ttName.textContent = name;
-      ttName.className = 'tooltip-header';
-      if (rarity === 'Legendary') ttName.classList.add('text-gold');
-      else if (rarity === 'Epic') ttName.classList.add('text-purple');
-      else if (rarity === 'Rare') ttName.classList.add('text-aqua');
-
-      ttType.textContent = `${rarity} ${type}`;
-      ttLore.textContent = lore;
-      ttStat.textContent = stat;
-      ttEnchant.textContent = enchant;
-
-      tooltip.classList.remove('hidden');
+      populateTooltip(slot);
     });
 
     slot.addEventListener('mousemove', (e) => {
-      const x = e.clientX + 16;
-      const y = e.clientY + 16;
-      tooltip.style.left = `${x}px`;
-      tooltip.style.top = `${y}px`;
+      positionTooltip(e.clientX, e.clientY);
     });
 
     slot.addEventListener('mouseleave', () => {
       tooltip.classList.add('hidden');
     });
+
+    // Mobile / Tablet Tap Interaction
+    slot.addEventListener('click', (e) => {
+      sfx.playPop();
+      populateTooltip(slot);
+      const rect = slot.getBoundingClientRect();
+      positionTooltip(rect.left + rect.width / 2, rect.top);
+      e.stopPropagation();
+    });
+  });
+
+  // Tap anywhere outside to dismiss tooltip on mobile
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.inv-slot.has-item')) {
+      tooltip.classList.add('hidden');
+    }
   });
 
   // ============================================================

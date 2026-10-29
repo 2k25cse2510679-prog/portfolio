@@ -405,10 +405,11 @@ body.theme-nether .mc-gui-dialog {
 .world-content {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 30px 20px;
+  padding: 24px clamp(10px, 3vw, 24px);
   display: flex;
   flex-direction: column;
-  gap: 60px;
+  gap: clamp(35px, 5vw, 60px);
+  width: 100%;
 }
 
 .section-container {
@@ -482,15 +483,16 @@ body.theme-nether .mc-gui-dialog {
 .hero-dialog {
   position: relative;
   z-index: 2;
-  margin: 40px;
+  margin: clamp(10px, 3.5vw, 40px);
   background-color: var(--world-card-bg);
   backdrop-filter: blur(4px);
+  padding: clamp(14px, 3vw, 24px);
 }
 
 .hero-body {
   display: grid;
-  grid-template-columns: 240px 1fr;
-  gap: 30px;
+  grid-template-columns: minmax(180px, 240px) 1fr;
+  gap: clamp(16px, 3vw, 30px);
   align-items: start;
 }
 
@@ -539,10 +541,11 @@ body.theme-nether .mc-gui-dialog {
 
 .dev-title {
   font-family: var(--font-pixel);
-  font-size: 2.2rem;
+  font-size: clamp(1.4rem, 4.8vw, 2.2rem);
   color: #1e1e1e;
-  letter-spacing: 2px;
+  letter-spacing: clamp(1px, 0.4vw, 2px);
   text-shadow: 2px 2px #ffffff;
+  word-break: break-word;
 }
 
 body.theme-nether .dev-title {
@@ -593,7 +596,7 @@ body.theme-nether .college-tag {
 
 .stat-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(145px, 100%), 1fr));
   gap: 10px;
 }
 
@@ -1035,8 +1038,8 @@ body.theme-nether .result-label {
 
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 25px;
+  grid-template-columns: repeat(auto-fit, minmax(min(290px, 100%), 1fr));
+  gap: clamp(16px, 3vw, 25px);
 }
 
 .mc-card {
@@ -1559,7 +1562,7 @@ body.theme-nether .project-meta {
 
 .minecraft-hotbar-container {
   position: fixed;
-  bottom: 12px;
+  bottom: 8px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 1000;
@@ -1568,17 +1571,21 @@ body.theme-nether .project-meta {
   border-top-color: #ffffff;
   border-left-color: #ffffff;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.8), 0 0 0 3px #000;
-  padding: 4px;
+  padding: 3px clamp(2px, 1vw, 6px);
+  max-width: calc(100vw - 10px);
+  box-sizing: border-box;
 }
 
 .hotbar-slots {
   display: flex;
-  gap: 4px;
+  gap: clamp(2px, 0.8vw, 4px);
+  align-items: center;
+  justify-content: center;
 }
 
 .hotbar-slot {
-  width: 52px;
-  height: 52px;
+  width: clamp(34px, 9.4vw, 52px);
+  height: clamp(34px, 9.4vw, 52px);
   background: #8b8b8b;
   border: 3px solid #373737;
   border-bottom-color: #ffffff;
@@ -1592,6 +1599,7 @@ body.theme-nether .project-meta {
   cursor: pointer;
   outline: none;
   transition: all 0.1s ease;
+  flex-shrink: 0;
 }
 
 .hotbar-slot .slot-num {
@@ -1664,16 +1672,31 @@ body.theme-nether .project-meta {
 .rare-rare { box-shadow: inset 0 0 6px #55ffff; }
 
 /* ============================================================
-   RESPONSIVE DESIGN (Tablets & Mobile)
+   RESPONSIVE DESIGN SYSTEM (Ultra-Wide, Desktop, Tablet, Mobile)
    ============================================================ */
 
-@media (max-width: 900px) {
+/* 1. Large Tablets & Medium Desktops (<= 1024px) */
+@media (max-width: 1024px) {
+  .hud-center .xp-subtitle {
+    display: none;
+  }
+  .hud-center {
+    max-width: 280px;
+  }
+  .crafting-gui {
+    grid-template-columns: 230px 1fr;
+    gap: 16px;
+  }
+}
+
+/* 2. Tablets in Portrait & Small Laptops (<= 880px) */
+@media (max-width: 880px) {
   .hero-body {
     grid-template-columns: 1fr;
     text-align: center;
   }
   .avatar-frame {
-    max-width: 200px;
+    max-width: 220px;
     margin: 0 auto;
   }
   .hero-actions {
@@ -1681,9 +1704,15 @@ body.theme-nether .project-meta {
   }
   .gui-top-row {
     grid-template-columns: 1fr;
+    gap: 16px;
   }
   .crafting-gui {
     grid-template-columns: 1fr;
+  }
+  .recipe-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(160px, 100%), 1fr));
+    gap: 8px;
   }
   .contact-grid {
     grid-template-columns: 1fr;
@@ -1691,40 +1720,184 @@ body.theme-nether .project-meta {
   .hud-center {
     display: none;
   }
+  .slots-grid {
+    grid-template-columns: repeat(7, 1fr);
+  }
 }
 
-@media (max-width: 600px) {
+/* 3. Small Tablets & Phablets (<= 680px) */
+@media (max-width: 680px) {
   .minecraft-hud-bar {
     padding: 6px 10px;
-  }
-  .player-level {
-    display: none;
+    gap: 8px;
   }
   .btn-label {
     display: none;
   }
-  .slots-grid {
-    grid-template-columns: repeat(5, 1fr);
-  }
-  .hotbar-slot {
-    width: 38px;
-    height: 38px;
-  }
-  .hotbar-slot .slot-icon {
-    font-size: 1.2rem;
-  }
-  .hotbar-slot .slot-num {
-    display: none;
+  .mc-btn-sm {
+    padding: 6px 8px;
+    font-size: 0.65rem;
   }
   .crafting-workbench {
     flex-direction: column;
-    gap: 15px;
+    gap: 14px;
+    padding: 16px 12px;
   }
   .craft-arrow {
     transform: rotate(90deg);
   }
+  .crafted-links {
+    flex-direction: column;
+  }
+  .crafted-links .mc-btn {
+    width: 100%;
+  }
   .adv-node {
     flex-direction: column;
     text-align: center;
+    gap: 12px;
+    padding: 14px 12px;
+  }
+  .character-preview-box {
+    justify-content: center;
+    gap: 16px;
+  }
+  .attr-list {
+    grid-template-columns: 1fr;
+  }
+  .hotbar-slot .slot-num {
+    display: none;
+  }
+  .hotbar-slot .slot-icon {
+    font-size: clamp(1.1rem, 3.2vw, 1.4rem);
+  }
+}
+
+/* 4. Standard Mobile Phones (<= 480px) */
+@media (max-width: 480px) {
+  .minecraft-hud-bar {
+    padding: 5px 6px;
+    gap: 4px;
+  }
+  .hud-left {
+    gap: 6px;
+  }
+  .hud-player-tag {
+    padding: 3px 6px;
+    gap: 4px;
+  }
+  .player-name {
+    font-size: 0.65rem;
+  }
+  .player-level {
+    font-size: 0.55rem;
+    padding: 1px 3px;
+  }
+  .status-bar .heart:nth-child(n+6),
+  .status-bar .drumstick:nth-child(n+6) {
+    display: none; /* Show 5 hearts & 5 drumsticks on small screens */
+  }
+  .heart, .drumstick {
+    width: 12px;
+    height: 12px;
+  }
+  .slots-grid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 4px;
+  }
+  .inv-slot {
+    min-height: 40px;
+  }
+  .item-icon {
+    font-size: 1.4rem;
+  }
+  .hero-actions .mc-btn {
+    flex: 1 1 100%;
+    width: 100%;
+    padding: 10px;
+    font-size: 0.7rem;
+  }
+  .stat-grid {
+    grid-template-columns: 1fr;
+  }
+  .dialog-header {
+    margin: -14px -14px 14px -14px;
+    padding: 6px 10px;
+  }
+  .dialog-title {
+    font-size: 0.62rem;
+  }
+  .section-heading {
+    font-size: 0.95rem;
+  }
+  .section-desc {
+    font-size: 1.15rem;
+  }
+  .book-gui {
+    padding: 14px 10px;
+  }
+  .mc-input {
+    font-size: 16px; /* Prevents auto-zoom on iOS */
+    padding: 8px 10px;
+  }
+  .project-actions {
+    flex-direction: column;
+  }
+  .project-actions .mc-btn {
+    width: 100%;
+  }
+  .advancement-container {
+    right: 10px;
+    left: 10px;
+    top: 60px;
+    padding: 8px 12px;
+    gap: 10px;
+  }
+}
+
+/* 5. Extra Small / Narrow Phones (<= 360px, Galaxy Fold, iPhone 5/SE) */
+@media (max-width: 360px) {
+  .slots-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .crafting-grid-3x3 {
+    grid-template-columns: repeat(3, 44px);
+    grid-template-rows: repeat(3, 44px);
+    gap: 4px;
+  }
+  .craft-slot {
+    width: 44px;
+    height: 44px;
+    font-size: 1.3rem;
+  }
+  .craft-result-slot {
+    width: 58px;
+    height: 58px;
+  }
+  .craft-result-slot .item-icon {
+    font-size: 2rem;
+  }
+  .dev-title {
+    font-size: 1.3rem;
+  }
+  .hotbar-slot {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+/* Touch Device Optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .mc-btn:active {
+    transform: translateY(1px);
+  }
+  .inv-slot:hover {
+    transform: none;
+  }
+  .hotbar-slot:hover .slot-popup {
+    display: none;
+  }
+  .hotbar-slot.active {
+    transform: translateY(-2px);
   }
 }
