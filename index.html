@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vinayak | Software Developer Portfolio - Minecraft Edition</title>
+  <meta name="description"
+    content="Portfolio of Vinayak, 2nd Year Computer Science student at PSIT Kanpur specializing in Java, Data Structures, and Modern Web Development with an immersive Minecraft GUI experience.">
+
+  <!-- Google Fonts: Retro Pixel & Monospace Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=Silkscreen:wght@400;700&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="theme-overworld">
+
+  <!-- Custom Minecraft Crosshair / Cursor Elements -->
+  <div id="custom-cursor" class="minecraft-cursor"></div>
+
+  <!-- Achievement / Advancement Toast Notification -->
+  <div id="advancement-toast" class="advancement-container hidden">
+    <div class="advancement-icon">🏆</div>
+    <div class="advancement-text">
+      <span class="advancement-title">Advancement Made!</span>
+      <span class="advancement-desc" id="toast-message">Discovered Vinayak's World</span>
+    </div>
+  </div>
+
+  <!-- Top Minecraft HUD / Status Bar -->
+  <header class="minecraft-hud-bar">
+    <div class="hud-left">
+      <div class="hud-player-tag">
+        <span class="hud-icon">⚔️</span>
+        <span class="player-name">Vinayak</span>
+        <span class="player-level" title="2nd Year B.Tech CSE">LVL 2</span>
+      </div>
+      <div class="hud-bars">
+        <!-- Health Hearts -->
+        <div class="status-bar health-bar" id="health-bar" title="Health: 10/10 Hearts">
+          <span class="heart full"></span><span class="heart full"></span>
+          <span class="heart full"></span><span class="heart full"></span>
+          <span class="heart full"></span><span class="heart full"></span>
+          <span class="heart full"></span><span class="heart full"></span>
+          <span class="heart full"></span><span class="heart full"></span>
+        </div>
+        <!-- Hunger Drumsticks -->
+        <div class="status-bar hunger-bar" id="hunger-bar" title="Hunger: Full (Fueled by Caffeine & Code)">
+          <span class="drumstick full"></span><span class="drumstick full"></span>
+          <span class="drumstick full"></span><span class="drumstick full"></span>
+          <span class="drumstick full"></span><span class="drumstick full"></span>
+          <span class="drumstick full"></span><span class="drumstick full"></span>
+          <span class="drumstick full"></span><span class="drumstick full"></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Center XP Progress Bar -->
+    <div class="hud-center">
+      <div class="xp-bar-container">
+        <div class="xp-bar-fill" style="width: 65%;"></div>
+        <span class="xp-number">20</span>
+      </div>
+      <span class="xp-subtitle">Sophomore @ PSIT Kanpur &bull; Progress to Year 3</span>
+    </div>
+
+    <!-- HUD Right Actions: Audio, Nether Portal Dimension Warp, Cursor Toggle -->
+    <div class="hud-right">
+      <button id="dimension-toggle" class="mc-btn mc-btn-sm" title="Warp between Overworld & Nether">
+        <span class="btn-icon">🌋</span> <span class="btn-label">Nether Warp</span>
+      </button>
+      <button id="sound-toggle" class="mc-btn mc-btn-sm" title="Toggle 8-bit Sound Effects">
+        <span class="btn-icon">🔊</span> <span class="btn-label">SFX: ON</span>
+      </button>
+      <a href="#contact" class="mc-btn mc-btn-sm mc-btn-gold">
+        <span>✉️ Hire Me</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- Main Canvas / World Container -->
+  <main class="world-content">
+
+    <!-- HERO SECTION: Spawn Point -->
+    <section id="spawn" class="section-hero">
+      <div class="hero-backdrop">
+        <img id="hero-banner-img" src="assets/banner.jpg" alt="Minecraft Landscape View" class="parallax-banner">
+        <div class="backdrop-overlay"></div>
+      </div>
+
+      <div class="mc-gui-dialog hero-dialog">
+        <div class="dialog-header">
+          <span class="dialog-title">★ SPAWN POINT: VINAYAK.CHR ★</span>
+          <div class="window-controls">
+            <span class="win-btn win-minimize">_</span>
+            <span class="win-btn win-close">✕</span>
+          </div>
+        </div>
+
+        <div class="hero-body">
+          <div class="avatar-frame">
+            <img src="assets/avatar.jpg" alt="Vinayak - Minecraft Developer Avatar" class="dev-avatar">
+            <div class="rank-badge">Tier: Junior Dev</div>
+          </div>
+
+          <div class="hero-details">
+            <div class="name-lore">
+              <h1 class="dev-title">VINAYAK</h1>
+              <p class="dev-subtitle">&lt;Software Developer / 2nd Year B.Tech CSE&gt;</p>
+              <p class="college-tag">🏛️ Pranveer Singh Institute of Technology (PSIT), Kanpur</p>
+            </div>
+
+            <div class="chat-message-box">
+              <span class="chat-sender">&lt;Server&gt;</span>
+              <span class="chat-text">Welcome to my voxel realm! Passionate about mastering <strong>Java
+                  Architecture</strong>, <strong>Data Structures & Algorithms</strong>, and building fast, responsive
+                <strong>Modern Web Applications</strong>.</span>
+            </div>
+
+            <div class="stat-grid">
+              <div class="stat-pill">
+                <span class="stat-label">Main Class</span>
+                <span class="stat-val text-aqua">Java Specialist</span>
+              </div>
+              <div class="stat-pill">
+                <span class="stat-label">Secondary Skill</span>
+                <span class="stat-val text-gold">Full-Stack Web</span>
+              </div>
+              <div class="stat-pill">
+                <span class="stat-label">Base Coordinates</span>
+                <span class="stat-val text-green">PSIT Kanpur, India</span>
+              </div>
+              <div class="stat-pill">
+                <span class="stat-label">Current Quest</span>
+                <span class="stat-val text-purple">SDE Intern 2025-26</span>
+              </div>
+            </div>
+
+            <div class="hero-actions">
+              <a href="#inventory" class="mc-btn mc-btn-green">
+                <span>🎒 Open Inventory (Skills)</span>
+              </a>
+              <a href="#crafting" class="mc-btn mc-btn-diamond">
+                <span>🔨 Crafting Table</span>
+              </a>
+              <a href="#projects" class="mc-btn mc-btn-gold">
+                <span>💎 Diamond Projects</span>
+              </a>
+              <a href="#contact" class="mc-btn">
+                <span>📡 Redstone Contact</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INVENTORY & GEAR SECTION: Skills, Tools & Attributes -->
+    <section id="inventory" class="section-container">
+      <div class="section-header-tag">
+        <h2 class="section-heading">[E] INVENTORY & ARSENAL</h2>
+        <p class="section-desc">Hover over any item in the hotbar and storage slots to inspect stats, enchantments, and
+          mastery levels.</p>
+      </div>
+
+      <div class="mc-gui-container inventory-gui">
+        <div class="gui-inner">
+          <div class="gui-top-row">
+            <div class="character-preview-box">
+              <div class="armor-slots">
+                <div class="inv-slot armor-slot" data-item="helmet" title="Helmet of Logic">
+                  <div class="item-icon">🪖</div>
+                </div>
+                <div class="inv-slot armor-slot" data-item="chestplate" title="Chestplate of Clean Code">
+                  <div class="item-icon">🥋</div>
+                </div>
+                <div class="inv-slot armor-slot" data-item="leggings" title="Leggings of PSIT Discipline">
+                  <div class="item-icon">👖</div>
+                </div>
+                <div class="inv-slot armor-slot" data-item="boots" title="Boots of Agility">
+                  <div class="item-icon">🥾</div>
+                </div>
+              </div>
+              <div class="player-figure">
+                <img src="assets/avatar.jpg" alt="Player Model" class="mini-model">
+                <div class="player-caption">Level 20 Dev</div>
+              </div>
+              <div class="shield-slot-box">
+                <div class="inv-slot shield-slot" data-item="shield" title="Git Version Control Shield">
+                  <div class="item-icon">🛡️</div>
+                </div>
+                <span class="offhand-label">Off-Hand</span>
+              </div>
+            </div>
+
+            <!-- Quick Stats & Attributes -->
+            <div class="attributes-panel">
+              <h3 class="panel-title">Character Attributes</h3>
+              <ul class="attr-list">
+                <li><span class="attr-name">⚔️ Java & OOP:</span> <span class="attr-val">Level 85 / 100</span></li>
+                <li><span class="attr-name">🧩 Data Structures & Algo:</span> <span class="attr-val">Level 80 /
+                    100</span></li>
+                <li><span class="attr-name">🌐 HTML5 / CSS3 / Vanilla JS:</span> <span class="attr-val">Level 88 /
+                    100</span></li>
+                <li><span class="attr-name">🍃 Spring Boot & REST APIs:</span> <span class="attr-val">Level 68 /
+                    100</span></li>
+                <li><span class="attr-name">🗄️ MySQL / Relational DBs:</span> <span class="attr-val">Level 75 /
+                    100</span></li>
+                <li><span class="attr-name">⚙️ Git, GitHub & CLI:</span> <span class="attr-val">Level 82 / 100</span>
+                </li>
+                <li><span class="attr-name">🧠 Problem Solving:</span> <span class="attr-val">Level 84 / 100</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Main 27-slot Inventory Grid -->
+          <div class="inventory-storage">
+            <div class="storage-label">Developer Inventory (Chest)</div>
+            <div class="slots-grid" id="inventory-grid">
+              <!-- Item 1: Java Diamond Sword -->
+              <div class="inv-slot has-item rare-epic" data-name="Diamond Sword of Java" data-rarity="Epic"
+                data-type="Core Weapon"
+                data-lore="Forged through intensive study of Core Java, OOP, Collections Framework, Multithreading, and Exception Handling."
+                data-stat="+92 Object-Oriented Mastery" data-enchantment="Enchantments: Efficiency V, Unbreaking III">
+                <div class="item-icon">☕</div>
+                <span class="item-count">17</span>
+              </div>
+
+              <!-- Item 2: DSA Enchanted Bow -->
+              <div class="inv-slot has-item rare-legendary" data-name="Enchanted Bow of Algorithms"
+                data-rarity="Legendary" data-type="Combat Tool"
+                data-lore="Trained in LeetCode & HackerRank challenges. Specializes in Arrays, HashMaps, Trees, Recursion, and Sorting."
+                data-stat="+85 Algorithmic Precision (O(N log N))" data-enchantment="Enchantments: Power V, Infinity I">
+                <div class="item-icon">🏹</div>
+                <span class="item-count">64</span>
+              </div>
+
+              <!-- Item 3: JavaScript Golden Pickaxe -->
+              <div class="inv-slot has-item rare-rare" data-name="Golden Pickaxe of JavaScript" data-rarity="Rare"
+                data-type="Frontend Excavation"
+                data-lore="Mines through the DOM at breakneck speeds. Fluent in modern ES6+, Async/Await, Events, and Web APIs."
+                data-stat="+88 Interactive Web Mining" data-enchantment="Enchantments: Haste II, Fortune III">
+                <div class="item-icon">⚡</div>
+                <span class="item-count">32</span>
+              </div>
+
+              <!-- Item 4: CSS3 Obsidian Shield -->
+              <div class="inv-slot has-item rare-rare" data-name="Obsidian Shield of CSS3" data-rarity="Rare"
+                data-type="Defensive Layout"
+                data-lore="Provides impregnable responsive layouts using Flexbox, CSS Grid, Media Queries, and sleek animations."
+                data-stat="+90 Responsive Defense" data-enchantment="Enchantments: Blast Protection IV">
+                <div class="item-icon">🎨</div>
+                <span class="item-count">1</span>
+              </div>
+
+              <!-- Item 5: HTML5 Bedrock Block -->
+              <div class="inv-slot has-item rare-common" data-name="Bedrock Foundation of HTML5" data-rarity="Common"
+                data-type="Structural Material"
+                data-lore="Semantic, accessible, and structured markup that forms the bedrock of every web experience."
+                data-stat="+100 Structural Integrity" data-enchantment="Enchantments: Permanent Solid">
+                <div class="item-icon">🧱</div>
+                <span class="item-count">64</span>
+              </div>
+
+              <!-- Item 6: Spring Boot Potion of Strength -->
+              <div class="inv-slot has-item rare-epic" data-name="Brew of Spring Boot" data-rarity="Epic"
+                data-type="Alchemy & Backend"
+                data-lore="Backend brewing: RESTful APIs, Spring MVC, dependency injection, and clean service layers."
+                data-stat="+70 Server Architecture" data-enchantment="Effects: Strength II (8:00)">
+                <div class="item-icon">🧪</div>
+                <span class="item-count">3</span>
+              </div>
+
+              <!-- Item 7: SQL Ender Chest -->
+              <div class="inv-slot has-item rare-rare" data-name="Ender Chest of MySQL" data-rarity="Rare"
+                data-type="Data Storage"
+                data-lore="Persistent relational tables, normalized schemas, complex joins, indexing, and JDBC connections."
+                data-stat="+80 Data Durability" data-enchantment="Enchantments: Persistence IV">
+                <div class="item-icon">🗄️</div>
+                <span class="item-count">1</span>
+              </div>
+
+              <!-- Item 8: Git Compass -->
+              <div class="inv-slot has-item rare-rare" data-name="Compass of Git & GitHub" data-rarity="Rare"
+                data-type="Navigation"
+                data-lore="Never get lost in branch conflicts. Master of commit history, pull requests, merges, and CI workflows."
+                data-stat="+85 Team Collaboration" data-enchantment="Points to origin/main">
+                <div class="item-icon">🧭</div>
+                <span class="item-count">1</span>
+              </div>
+
+              <!-- Item 9: Redstone Wiring -->
+              <div class="inv-slot has-item rare-rare" data-name="Redstone Dust of Logic" data-rarity="Rare"
+                data-type="Electrical & Logic"
+                data-lore="Boolean logic gates, circuit thinking, computer architecture, and clean system design."
+                data-stat="+88 Analytical Reasoning" data-enchantment="Conductivity: 15 Blocks">
+                <div class="item-icon">🔴</div>
+                <span class="item-count">64</span>
+              </div>
+
+              <!-- Filler Slots for true Minecraft GUI feel -->
+              <div class="inv-slot has-item rare-common" data-name="Book of PSIT Curriculum" data-rarity="Common"
+                data-type="Academic Lore"
+                data-lore="Computer Science & Engineering coursework at PSIT Kanpur (CGPA: 8.2+)."
+                data-stat="Semester IV in progress" data-enchantment="Knowledge Booster">
+                <div class="item-icon">📖</div>
+                <span class="item-count">4</span>
+              </div>
+
+              <div class="inv-slot has-item rare-common" data-name="Golden Apple of Problem Solving" data-rarity="Rare"
+                data-type="Consumable"
+                data-lore="Absorbs complex bug reports and grants instant regeneration of creative ideas."
+                data-stat="+4 Absorption Hearts" data-enchantment="Regeneration II">
+                <div class="item-icon">🍏</div>
+                <span class="item-count">8</span>
+              </div>
+
+              <div class="inv-slot has-item rare-epic" data-name="Nether Star of Innovation" data-rarity="Legendary"
+                data-type="Beacon Core"
+                data-lore="Ambition to engineer high-performance systems and full-stack software products."
+                data-stat="Beacon Haste & Speed" data-enchantment="Radiance V">
+                <div class="item-icon">⭐</div>
+                <span class="item-count">1</span>
+              </div>
+
+              <!-- Empty slots -->
+              <div class="inv-slot"></div>
+              <div class="inv-slot"></div>
+              <div class="inv-slot"></div>
+              <div class="inv-slot"></div>
+              <div class="inv-slot"></div>
+              <div class="inv-slot"></div>
+              <div class="inv-slot"></div>
+              <div class="inv-slot"></div>
+              <div class="inv-slot"></div>
+              <div class="inv-slot"></div>
+              <div class="inv-slot"></div>
+              <div class="inv-slot"></div>
+              <div class="inv-slot"></div>
+              <div class="inv-slot"></div>
+              <div class="inv-slot"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CRAFTING TABLE SECTION: Interactive Project Recipes -->
+    <section id="crafting" class="section-container">
+      <div class="section-header-tag">
+        <h2 class="section-heading">[3x3] THE CRAFTING FORGE</h2>
+        <p class="section-desc">Select a recipe below to combine skills and forge one of Vinayak's standout projects
+          inside the crafting grid!</p>
+      </div>
+
+      <div class="mc-gui-container crafting-gui">
+        <div class="recipe-book">
+          <h3 class="recipe-book-title">📖 Recipe Book</h3>
+          <div class="recipe-list">
+            <button class="recipe-btn active" data-recipe="algoplay">
+              <span class="r-icon">☕</span>
+              <span class="r-title">Java DSA Arena</span>
+            </button>
+            <button class="recipe-btn" data-recipe="webcraft">
+              <span class="r-icon">💎</span>
+              <span class="r-title">Minecraft Portfolio</span>
+            </button>
+            <button class="recipe-btn" data-recipe="campus">
+              <span class="r-icon">🏛️</span>
+              <span class="r-title">PSIT Campus Portal</span>
+            </button>
+            <button class="recipe-btn" data-recipe="restapi">
+              <span class="r-icon">🍃</span>
+              <span class="r-title">Spring Boot E-Shop API</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="crafting-workbench">
+          <!-- 3x3 Grid -->
+          <div class="crafting-grid-3x3" id="crafting-grid">
+            <div class="craft-slot" id="craft-0"></div>
+            <div class="craft-slot" id="craft-1"></div>
+            <div class="craft-slot" id="craft-2"></div>
+            <div class="craft-slot" id="craft-3"></div>
+            <div class="craft-slot" id="craft-4"></div>
+            <div class="craft-slot" id="craft-5"></div>
+            <div class="craft-slot" id="craft-6"></div>
+            <div class="craft-slot" id="craft-7"></div>
+            <div class="craft-slot" id="craft-8"></div>
+          </div>
+
+          <!-- Animated Crafting Arrow -->
+          <div class="craft-arrow">
+            <span class="arrow-symbol">➔</span>
+          </div>
+
+          <!-- Result Slot -->
+          <div class="craft-result-container">
+            <div class="craft-slot craft-result-slot" id="craft-result">
+              <div class="item-icon" id="result-icon">⚔️</div>
+            </div>
+            <span class="result-label">CRAFTED RESULT</span>
+          </div>
+        </div>
+
+        <!-- Recipe Details Output Card -->
+        <div class="recipe-result-card" id="recipe-card">
+          <div class="result-card-header">
+            <h4 class="crafted-title" id="card-title">Java DSA Arena & Visualizer</h4>
+            <span class="crafted-badge text-gold" id="card-badge">★ Legendary Project</span>
+          </div>
+          <p class="crafted-description" id="card-desc">
+            A high-performance algorithmic visualizer built in Java showcasing core searching, sorting (QuickSort,
+            MergeSort), graph traversals (BFS, DFS), and dynamic tree balance animations with step-by-step metrics.
+          </p>
+          <div class="crafted-ingredients">
+            <span class="ing-tag">☕ Java 17</span>
+            <span class="ing-tag">🧩 OOP Design</span>
+            <span class="ing-tag">📊 DSA Complexity Engine</span>
+          </div>
+          <div class="crafted-links">
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="mc-btn mc-btn-sm mc-btn-green"
+              id="card-repo">
+              <span>View Source on GitHub</span>
+            </a>
+            <a href="#projects" class="mc-btn mc-btn-sm" id="card-demo">
+              <span>Inspect in Showcase</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DIAMOND PROJECTS SHOWCASE -->
+    <section id="projects" class="section-container">
+      <div class="section-header-tag">
+        <h2 class="section-heading">[💎] DIAMOND LOOT: PROJECTS</h2>
+        <p class="section-desc">Key systems, applications, and tools built with Java, Web Technologies, and clean
+          software architecture.</p>
+      </div>
+
+      <div class="projects-grid">
+        <!-- Project 1 -->
+        <article class="project-block mc-card">
+          <div class="card-item-frame">
+            <span class="frame-icon">☕</span>
+            <span class="item-rarity text-purple">EPIC LOOT</span>
+          </div>
+          <h3 class="project-title">Java DSA Engine & Visualizer</h3>
+          <p class="project-summary">
+            A comprehensive algorithm laboratory implementing advanced data structures, graph search algorithms, sorting
+            visualizers, and time-complexity benchmarks in Java.
+          </p>
+          <div class="project-meta">
+            <div class="meta-row"><strong>Role:</strong> Core Architecture & Implementation</div>
+            <div class="meta-row"><strong>Stack:</strong> Java 17, Swing/JavaFX, OOP, JUnit</div>
+          </div>
+          <div class="tag-cloud">
+            <span class="tag">Java</span>
+            <span class="tag">Algorithms</span>
+            <span class="tag">Data Structures</span>
+            <span class="tag">Optimization</span>
+          </div>
+          <div class="project-actions">
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer"
+              class="mc-btn mc-btn-sm mc-btn-green">
+              <span>Source Code</span>
+            </a>
+            <button class="mc-btn mc-btn-sm inspect-btn" data-project="java-dsa">
+              <span>Inspect Stats</span>
+            </button>
+          </div>
+        </article>
+
+        <!-- Project 2 -->
+        <article class="project-block mc-card featured-card">
+          <div class="card-item-frame">
+            <span class="frame-icon">⛏️</span>
+            <span class="item-rarity text-gold">LEGENDARY LOOT</span>
+          </div>
+          <h3 class="project-title">Minecraft Themed Web Portfolio</h3>
+          <p class="project-summary">
+            An ultra-responsive, gamified personal portfolio with authentic Minecraft GUI, Web Audio API sound
+            synthesis, Nether dimension warp, interactive crafting table, and HUD status system.
+          </p>
+          <div class="project-meta">
+            <div class="meta-row"><strong>Role:</strong> Full-Stack Frontend Design & Logic</div>
+            <div class="meta-row"><strong>Stack:</strong> HTML5, Vanilla CSS3, Modern JavaScript ES6+, Web Audio API
+            </div>
+          </div>
+          <div class="tag-cloud">
+            <span class="tag">JavaScript</span>
+            <span class="tag">CSS Grid/Flex</span>
+            <span class="tag">Audio Synthesis</span>
+            <span class="tag">Interactive UI</span>
+          </div>
+          <div class="project-actions">
+            <a href="#" class="mc-btn mc-btn-sm mc-btn-diamond"
+              onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">
+              <span>Live Experience</span>
+            </a>
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer"
+              class="mc-btn mc-btn-sm mc-btn-green">
+              <span>Repository</span>
+            </a>
+          </div>
+        </article>
+
+        <!-- Project 3 -->
+        <article class="project-block mc-card">
+          <div class="card-item-frame">
+            <span class="frame-icon">🏛️</span>
+            <span class="item-rarity text-aqua">RARE LOOT</span>
+          </div>
+          <h3 class="project-title">PSIT Campus Portal & Utility</h3>
+          <p class="project-summary">
+            A student companion web portal specifically customized for PSIT Kanpur students featuring attendance
+            tracking, semester timetable management, syllabus tracker, and peer study resource sharing.
+          </p>
+          <div class="project-meta">
+            <div class="meta-row"><strong>Role:</strong> Frontend & Backend Integration</div>
+            <div class="meta-row"><strong>Stack:</strong> JavaScript, LocalStorage, HTML5, Bootstrap/CSS, Node API</div>
+          </div>
+          <div class="tag-cloud">
+            <span class="tag">PSIT Kanpur</span>
+            <span class="tag">Student Portal</span>
+            <span class="tag">Web Dev</span>
+            <span class="tag">Productivity</span>
+          </div>
+          <div class="project-actions">
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer"
+              class="mc-btn mc-btn-sm mc-btn-green">
+              <span>View Project</span>
+            </a>
+            <button class="mc-btn mc-btn-sm inspect-btn" data-project="psit-portal">
+              <span>Inspect Stats</span>
+            </button>
+          </div>
+        </article>
+
+        <!-- Project 4 -->
+        <article class="project-block mc-card">
+          <div class="card-item-frame">
+            <span class="frame-icon">🍃</span>
+            <span class="item-rarity text-purple">EPIC LOOT</span>
+          </div>
+          <h3 class="project-title">Spring Boot E-Commerce Core API</h3>
+          <p class="project-summary">
+            A modular backend service providing RESTful endpoints for user authentication, product catalog, cart
+            persistence, and order transactions with MySQL and JPA Hibernate.
+          </p>
+          <div class="project-meta">
+            <div class="meta-row"><strong>Role:</strong> Backend Architecture</div>
+            <div class="meta-row"><strong>Stack:</strong> Java, Spring Boot, MySQL, Spring Data JPA, JWT</div>
+          </div>
+          <div class="tag-cloud">
+            <span class="tag">Spring Boot</span>
+            <span class="tag">REST API</span>
+            <span class="tag">MySQL</span>
+            <span class="tag">Backend</span>
+          </div>
+          <div class="project-actions">
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer"
+              class="mc-btn mc-btn-sm mc-btn-green">
+              <span>Source Code</span>
+            </a>
+            <button class="mc-btn mc-btn-sm inspect-btn" data-project="spring-shop">
+              <span>Inspect Stats</span>
+            </button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- QUEST LOG & ADVANCEMENTS (Education & Milestones) -->
+    <section id="advancements" class="section-container">
+      <div class="section-header-tag">
+        <h2 class="section-heading">[🏆] ADVANCEMENTS & QUEST LOG</h2>
+        <p class="section-desc">Academic path, milestone unlocks, and engineering growth at PSIT Kanpur.</p>
+      </div>
+
+      <div class="advancement-tree-gui mc-gui-container">
+        <div class="adv-tree">
+
+          <!-- Branch 1: Root -->
+          <div class="adv-node completed">
+            <div class="adv-frame">
+              <span class="adv-icon">🌲</span>
+            </div>
+            <div class="adv-content">
+              <span class="adv-type text-green">ROOT ADVANCEMENT</span>
+              <h4 class="adv-name">Taking Inventory: PSIT Kanpur</h4>
+              <p class="adv-details">Admitted into B.Tech Computer Science & Engineering at Pranveer Singh Institute of
+                Technology, Kanpur (2024 - 2028). Built solid academic foundation in mathematics & CS fundamentals.</p>
+            </div>
+          </div>
+
+          <div class="adv-connector vertical"></div>
+
+          <!-- Branch 2: Java Mastery -->
+          <div class="adv-node completed">
+            <div class="adv-frame">
+              <span class="adv-icon">☕</span>
+            </div>
+            <div class="adv-content">
+              <span class="adv-type text-aqua">SKILL UNLOCK</span>
+              <h4 class="adv-name">Getting an Upgrade: Java & OOP</h4>
+              <p class="adv-details">Dived deep into Java programming: master of classes, inheritance, polymorphism,
+                abstract interfaces, and robust multi-threaded applications.</p>
+            </div>
+          </div>
+
+          <div class="adv-connector vertical"></div>
+
+          <!-- Branch 3: Algorithms -->
+          <div class="adv-node completed">
+            <div class="adv-frame challenge">
+              <span class="adv-icon">🏹</span>
+            </div>
+            <div class="adv-content">
+              <span class="adv-type text-purple">CHALLENGE COMPLETE</span>
+              <h4 class="adv-name">Sniper Duel: 150+ DSA Problems</h4>
+              <p class="adv-details">Consistent problem-solving on LeetCode & coding platforms focusing on time/space
+                complexity optimization, arrays, two-pointer, hashing, and trees.</p>
+            </div>
+          </div>
+
+          <div class="adv-connector vertical"></div>
+
+          <!-- Branch 4: Web Dev -->
+          <div class="adv-node completed">
+            <div class="adv-frame goal">
+              <span class="adv-icon">💎</span>
+            </div>
+            <div class="adv-content">
+              <span class="adv-type text-gold">GOAL REACHED</span>
+              <h4 class="adv-name">Diamonds!: Full-Stack Web Development</h4>
+              <p class="adv-details">Engineered responsive user interfaces with JavaScript ES6+, CSS Grid, DOM
+                Manipulation, and modern REST APIs.</p>
+            </div>
+          </div>
+
+          <div class="adv-connector vertical"></div>
+
+          <!-- Branch 5: Current Quest -->
+          <div class="adv-node in-progress">
+            <div class="adv-frame nether-frame">
+              <span class="adv-icon">🌌</span>
+            </div>
+            <div class="adv-content">
+              <span class="adv-type text-nether">ACTIVE QUEST (YEAR 2)</span>
+              <h4 class="adv-name">We Need to Go Deeper: Spring Boot & Industry Ready</h4>
+              <p class="adv-details">Developing enterprise microservices, Spring Boot backends, SQL optimizations, and
+                actively seeking Software Developer Internships for Summer 2025.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT & REDSTONE TERMINAL -->
+    <section id="contact" class="section-container">
+      <div class="section-header-tag">
+        <h2 class="section-heading">[🔴] TRANSMIT REDSTONE SIGNAL</h2>
+        <p class="section-desc">Send a dispatch directly to Vinayak's terminal or connect through gamer coordinates.</p>
+      </div>
+
+      <div class="contact-gui mc-gui-container">
+        <div class="contact-grid">
+
+          <!-- Terminal / Book Form -->
+          <div class="book-gui">
+            <div class="book-header">
+              <span class="book-title">📜 Book & Quill: Dispatch Note</span>
+              <span class="book-page">Page 1 of 1</span>
+            </div>
+
+            <form id="contact-form" class="book-form">
+              <div class="form-group">
+                <label for="player-ign" class="field-label">&gt; Player IGN / Your Name:</label>
+                <input type="text" id="player-ign" required placeholder="Steve / Recruiter Name" class="mc-input">
+              </div>
+
+              <div class="form-group">
+                <label for="player-coords" class="field-label">&gt; Contact Coordinates / Email:</label>
+                <input type="email" id="player-coords" required placeholder="contact@company.com" class="mc-input">
+              </div>
+
+              <div class="form-group">
+                <label for="player-msg" class="field-label">&gt; Dispatch Message / Project Details:</label>
+                <textarea id="player-msg" rows="4" required
+                  placeholder="Hey Vinayak, I saw your Java & Web Dev portfolio and would love to discuss an internship / collaboration..."
+                  class="mc-input mc-textarea"></textarea>
+              </div>
+
+              <button type="submit" class="mc-btn mc-btn-green w-100" id="send-redstone-btn">
+                <span>🔴 Transmit Redstone Pulse (Send)</span>
+              </button>
+
+              <div id="form-feedback" class="form-feedback hidden">
+                ✓ Redstone pulse sent successfully! Vinayak received your message.
+              </div>
+            </form>
+          </div>
+
+          <!-- Player Social Beacon -->
+          <div class="beacon-card">
+            <div class="beacon-beam"></div>
+            <h3 class="beacon-title">Beacon Coordinates</h3>
+
+            <div class="coordinate-list">
+              <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="coord-pill"
+                title="GitHub Profile">
+                <span class="c-icon">🐙</span>
+                <span class="c-text">GitHub / vinayak-dev</span>
+              </a>
+
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="coord-pill"
+                title="LinkedIn Profile">
+                <span class="c-icon">💼</span>
+                <span class="c-text">LinkedIn / vinayak-cs</span>
+              </a>
+
+              <a href="mailto:vinayak@example.com" class="coord-pill" title="Send Email Direct">
+                <span class="c-icon">📧</span>
+                <span class="c-text">vinayak.cs.psit@gmail.com</span>
+              </a>
+
+              <div class="coord-pill non-link">
+                <span class="c-icon">📍</span>
+                <span class="c-text">PSIT Kanpur, Uttar Pradesh, India</span>
+              </div>
+            </div>
+
+            <div class="server-status-card">
+              <div class="status-indicator online"></div>
+              <div class="status-info">
+                <span class="status-title">Server Status: ONLINE</span>
+                <span class="status-sub">Ready for New Quests & SDE Roles</span>
+              </div>
+            </div>
+
+            <div class="easter-egg-creeper" id="creeper-btn" title="Don't poke the Creeper!">
+              <span class="creeper-face">🟩</span>
+              <span class="creeper-tip">Click me if you dare...</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Minecraft Interactive Lore Tooltip (dynamically updated on slot hover) -->
+  <div id="mc-tooltip" class="mc-lore-tooltip hidden">
+    <div class="tooltip-header" id="tt-name">Item Name</div>
+    <div class="tooltip-type text-gray" id="tt-type">Item Category</div>
+    <div class="tooltip-divider"></div>
+    <div class="tooltip-lore" id="tt-lore">Item Lore Description</div>
+    <div class="tooltip-stat text-aqua" id="tt-stat">+99 Code Quality</div>
+    <div class="tooltip-enchant text-purple" id="tt-enchant">Enchantments</div>
+  </div>
+
+  <!-- FIXED BOTTOM MINECRAFT HOTBAR (Keys 1-9 & Quick Navigation) -->
+  <nav class="minecraft-hotbar-container" aria-label="Quick Hotbar Navigation">
+    <div class="hotbar-slots">
+      <a href="#spawn" class="hotbar-slot active" data-slot="1" title="[1] Spawn Point">
+        <span class="slot-num">1</span>
+        <span class="slot-icon">🏠</span>
+        <span class="slot-popup">Spawn</span>
+      </a>
+      <a href="#inventory" class="hotbar-slot" data-slot="2" title="[2] Skills Inventory">
+        <span class="slot-num">2</span>
+        <span class="slot-icon">🎒</span>
+        <span class="slot-popup">Skills</span>
+      </a>
+      <a href="#crafting" class="hotbar-slot" data-slot="3" title="[3] Crafting Table">
+        <span class="slot-num">3</span>
+        <span class="slot-icon">🔨</span>
+        <span class="slot-popup">Crafting</span>
+      </a>
+      <a href="#projects" class="hotbar-slot" data-slot="4" title="[4] Diamond Projects">
+        <span class="slot-num">4</span>
+        <span class="slot-icon">💎</span>
+        <span class="slot-popup">Projects</span>
+      </a>
+      <a href="#advancements" class="hotbar-slot" data-slot="5" title="[5] Quest Log">
+        <span class="slot-num">5</span>
+        <span class="slot-icon">🏆</span>
+        <span class="slot-popup">Quests</span>
+      </a>
+      <a href="#contact" class="hotbar-slot" data-slot="6" title="[6] Redstone Contact">
+        <span class="slot-num">6</span>
+        <span class="slot-icon">🔴</span>
+        <span class="slot-popup">Contact</span>
+      </a>
+      <button id="hotbar-dimension-btn" class="hotbar-slot" data-slot="7" title="[7] Dimension Warp">
+        <span class="slot-num">7</span>
+        <span class="slot-icon">🌋</span>
+        <span class="slot-popup">Nether</span>
+      </button>
+      <button id="hotbar-sound-btn" class="hotbar-slot" data-slot="8" title="[8] Toggle SFX">
+        <span class="slot-num">8</span>
+        <span class="slot-icon" id="hotbar-sound-icon">🔊</span>
+        <span class="slot-popup">Audio</span>
+      </button>
+      <a href="#contact" class="hotbar-slot" data-slot="9" title="[9] Hire / Collaborate">
+        <span class="slot-num">9</span>
+        <span class="slot-icon">⚔️</span>
+        <span class="slot-popup">Hire</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- Audio elements & Scripts -->
+  <script src="app.js"></script>
+</body>
+
+</html>
